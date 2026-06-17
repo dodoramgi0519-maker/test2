@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>아우라 (Aura) - PC 맞춤형 AI 문체 변환기</title>
+    <title>아우라 (Aura) - PC 맞춤형 AI 문체 변환기 (Proxy Mode)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -82,7 +82,7 @@
                 <div>
                     <div class="flex items-center space-x-2">
                         <span class="text-lg font-bold text-slate-950 tracking-tight">아우라 (Aura)</span>
-                        <span class="px-2 py-0.5 bg-brand-50 text-brand-700 text-[10px] font-bold rounded-full border border-brand-100">DESKTOP PRO</span>
+                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-bold rounded-full border border-emerald-100">PROXY SECURED</span>
                     </div>
                     <span class="text-xs block text-slate-400 font-medium mt-0.5">상황과 대상에 맞춰 격을 높이는 AI 문체 어드바이저</span>
                 </div>
@@ -97,7 +97,7 @@
                 <div class="h-5 w-px bg-slate-200"></div>
                 <div class="flex items-center space-x-2 text-xs bg-slate-100 text-slate-600 px-3 py-1.5 rounded-md font-medium border border-slate-200/40">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>Gemini 3.1 Flash Engine Connected</span>
+                    <span>Cloudflare Worker Proxy Enabled</span>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
         <!-- Minimal Title Header -->
         <div class="mb-5 border-b border-slate-200/60 pb-4">
             <h1 class="text-xl font-bold text-slate-900">새로운 문체 작성하기</h1>
-            <p class="text-xs text-slate-500 mt-1">상대방이 읽었을 때 심리적 거부감을 줄이고 자연스럽게 느낄 수 있는 단어와 말투로 자동 교정합니다.</p>
+            <p class="text-xs text-slate-500 mt-1">보안 프록시를 통해 구글 API 키 노출 걱정 없이 안전하게 고품질 맞춤 문체로 다듬어 줍니다.</p>
         </div>
 
         <!-- Desktop Grid (2 Column Widescreen) -->
@@ -245,7 +245,7 @@
                             </div>
                             <div>
                                 <p class="font-bold text-slate-700 text-sm">입력된 문장이 없습니다.</p>
-                                <p class="text-xs text-slate-400 mt-1.5 max-w-sm mx-auto leading-relaxed">왼쪽 보드에 원문과 대상을 입력하고 변환하기를 누르시면 완벽히 다듬어진 결과가 실시간 표시됩니다.</p>
+                                <p class="text-xs text-slate-400 mt-1.5 max-w-sm mx-auto leading-relaxed">프록시 모드가 작동 중입니다. 왼쪽 보드에 원문과 대상을 입력하고 변환하기를 누르시면 안전한 경로로 변환 결과를 가져옵니다.</p>
                             </div>
                         </div>
 
@@ -256,8 +256,8 @@
                                 <div class="absolute inset-0 rounded-full border-[3px] border-brand-500 border-t-transparent animate-spin"></div>
                             </div>
                             <div>
-                                <p class="font-bold text-slate-800 text-sm">지정 대상을 위한 심리학적 완곡 어휘 조합 적용 중...</p>
-                                <p class="text-xs text-slate-400 mt-1.5">가장 매끄럽고 어조가 바른 문체 레이아웃을 생성 중입니다.</p>
+                                <p class="font-bold text-slate-800 text-sm">보안 게이트웨이를 경유해 대상 수신 성향 보정 중...</p>
+                                <p class="text-xs text-slate-400 mt-1.5">안전하게 AI 서버와 통신 중입니다. 잠시만 기다려 주세요.</p>
                             </div>
                         </div>
 
@@ -378,7 +378,7 @@
             <p>© 2026 아우라 (Aura) AI Studio. All rights reserved.</p>
             <p class="flex items-center space-x-1.5">
                 <span class="inline-block w-2 h-2 rounded-full bg-brand-500"></span>
-                <span>Powered by Gemini 3.1 & 2.5 TTS Engine</span>
+                <span>Secure Proxy Connection Verified</span>
             </p>
         </div>
     </footer>
@@ -390,6 +390,9 @@
         let convertedTextCache = '';
         let audioContext = null;
         let activeAudioSource = null;
+
+        // Cloudflare Worker Proxy Base URL
+        const PROXY_URL = 'https://test.dollboll90.workers.dev';
 
         // Base64 decoding functions
         function decode(base64) {
@@ -470,7 +473,7 @@
             }
         }
 
-        // Modern Segmented Target Selection Logic (Blue & White Custom Theme)
+        // Modern Segmented Target Selection Logic
         function selectAudience(audience) {
             selectedAudience = audience;
             
@@ -518,7 +521,7 @@
             document.getElementById('char-count').innerText = `${len} / 1000자`;
         }
 
-        // Core Transform Function (Triggers Gemini Translation)
+        // Core Transform Function (Triggers Gemini Translation via Cloudflare Worker Proxy)
         async function startTransform() {
             initAudioContext();
             const originalText = document.getElementById('original-text').value.trim();
@@ -537,7 +540,7 @@
             
             const submitBtn = document.getElementById('submit-btn');
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> <span>새로운 문체를 실시간 조율하는 중...</span>`;
+            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> <span>안전 프록시를 통해 통신하는 중...</span>`;
 
             try {
                 const responseText = await callGeminiAPI(originalText, situation, selectedAudience);
@@ -574,8 +577,8 @@
                 saveHistory(originalText, responseText, situation, selectedAudience);
 
             } catch (err) {
-                console.error("Gemini API Conversion failed: ", err);
-                showToast('❌ 문체 교정 중 일시적인 API 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.', 'rose');
+                console.error("Proxy Gemini API Conversion failed: ", err);
+                showToast('❌ 프록시 서버 통신 실패. 프록시 주소 설정 및 트래픽 양을 확인해 주세요.', 'rose');
                 document.getElementById('output-loading').classList.add('hidden');
                 document.getElementById('output-idle').classList.remove('hidden');
             } finally {
@@ -607,7 +610,7 @@
             return colors[aud] || 'bg-slate-100 text-slate-800';
         }
 
-        // Bridge to Gemini Text model API
+        // Post request through the Cloudflare Worker Proxy URL
         async function callGeminiAPI(original, context, audience) {
             const systemPrompt = `당신은 대한민국 최고의 사회정신의학 기반 커뮤니케이션 연구가이자 대화법 컨설턴트입니다.
 입력된 [원문]과 [상황/맥락]을 기반으로, 상대방이 상처받지 않고 가장 기쁘게 설득되며, 심리적 편안함을 유지할 수 있는 최적의 어휘와 구조로 문장을 다시 작성(Rewriting)해 주세요.
@@ -642,8 +645,8 @@
 
 지정된 조건으로 완벽히 재작성해 주세요:`;
 
-            const apiKey = ""; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            // Request targets the Proxy endpoint instead of direct Google API
+            const proxyEndpoint = `${PROXY_URL}/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent`;
 
             const payload = {
                 contents: [{ parts: [{ text: userQuery }] }],
@@ -652,20 +655,24 @@
                 }
             };
 
-            const response = await fetch(apiUrl, {
+            const response = await fetch(proxyEndpoint, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
 
+            if (!response.ok) {
+                throw new Error(`HTTP Error Status: ${response.status}`);
+            }
+
             const result = await response.json();
             const responseText = result.candidates?.[0]?.content?.parts?.[0]?.text;
-            if (!responseText) throw new Error("Translation payload is blank");
+            if (!responseText) throw new Error("Translation payload is empty");
             
             return responseText.trim();
         }
 
-        // TTS Playback Pipeline
+        // TTS Playback Pipeline (Routing through Cloudflare Proxy)
         async function speakOutput() {
             initAudioContext();
             if (!convertedTextCache) return;
@@ -695,7 +702,7 @@
             }
 
             const speakBtn = document.getElementById('speak-btn');
-            speakBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> <span>음성 합성 중...</span>`;
+            speakBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> <span>프록시 음성 변환 중...</span>`;
             speakBtn.disabled = true;
 
             const speakerIdentity = document.getElementById('speaker-identity');
@@ -703,7 +710,7 @@
             const ttsStatus = document.getElementById('tts-status');
 
             speakerIdentity.innerHTML = `<span>AI 내레이터: <b>${voiceName}</b> (${getAudienceTag(selectedAudience)} 전문)</span>`;
-            ttsStatus.innerText = "음성을 합성하고 버퍼를 확보하는 중...";
+            ttsStatus.innerText = "프록시 게이트웨이에서 원격 오디오 스트림 조합 중...";
             ttsPlayer.classList.remove('hidden');
 
             try {
@@ -722,14 +729,18 @@
                     model: "gemini-2.5-flash-preview-tts"
                 };
 
-                const apiKey = ""; 
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+                // Request TTS from the Proxy Endpoint
+                const proxyTtsEndpoint = `${PROXY_URL}/v1beta/models/gemini-2.5-flash-preview-tts:generateContent`;
 
-                const response = await fetch(apiUrl, {
+                const response = await fetch(proxyTtsEndpoint, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
+
+                if (!response.ok) {
+                    throw new Error(`TTS HTTP Error Status: ${response.status}`);
+                }
 
                 const result = await response.json();
                 const part = result?.candidates?.[0]?.content?.parts?.[0];
@@ -757,15 +768,15 @@
                     activeAudioSource = audio;
                     audio.play();
 
-                    ttsStatus.innerText = "맞춤형 감성 목소리가 실시간 재생되는 중입니다.";
+                    ttsStatus.innerText = "안전하게 버퍼링된 오디오 스트림이 재생 중입니다.";
                     document.getElementById('waveform-indicator').classList.remove('opacity-40');
                 } else {
-                    throw new Error("Unable to capture correct audio response stream");
+                    throw new Error("Unable to capture correct audio response stream from proxy");
                 }
 
             } catch (err) {
-                console.error("TTS Pipeline error: ", err);
-                showToast("❌ 음성 합성 시스템 연결 중 임시 장치 연결 실패가 감지되었습니다.", 'rose');
+                console.error("TTS Pipeline proxy error: ", err);
+                showToast("❌ 음성 프록시 게이트웨이 지연이 발생했습니다.", 'rose');
                 ttsPlayer.classList.add('hidden');
             } finally {
                 speakBtn.innerHTML = `<i class="fa-solid fa-volume-high text-brand-500"></i> <span>AI 보이스 낭독</span>`;
